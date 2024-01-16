@@ -2,7 +2,7 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className="text-3xl font-bold underline">Navbar</div>
+    <div className="text-lg">Navbar</div>
   )
 }
 

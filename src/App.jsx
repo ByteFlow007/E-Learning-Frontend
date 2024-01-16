@@ -1,17 +1,24 @@
-import React from 'react'
-import Navbar from './components/Navbar/Navbar.jsx'
-import Body from './components/Body/Body.jsx'
-import Footer from './components/Footer/Footer.jsx'
-import "./App.css"
+import React from "react";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import Signin from "./components/Signin/Signin.jsx";
+import Signup from "./components/Signup/Signup.jsx";
+import Courses from "./components/Courses/Courses.jsx";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Body />
+      <Routes>
+        <Route path="/" element={<Courses />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
