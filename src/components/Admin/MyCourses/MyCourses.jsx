@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function MyCourses() {
-  return (
-    <div>MyCourses</div>
-  )
+  return <div className="bg-blue-100 h-screen">MyCourses</div>;
 }
 
-export default MyCourses
+export default MyCourses;

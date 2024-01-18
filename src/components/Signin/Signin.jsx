@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signin() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const navigate = useNavigate();
 
   function handleSignin(e) {
     e.preventDefault();
-    navigate(`/`);
+    isAdmin ? navigate("/admin/mycourses") : navigate("/");
+  }
+
+  function handleAdmin() {
+    setIsAdmin(!isAdmin);
   }
 
   return (
@@ -31,9 +37,20 @@ function Signin() {
             placeholder="Password"
             className="input input-bordered w-full max-w-xs text-green-800"
           />
+          <div className="form-control ">
+            <label className="label cursor-pointer mt-3 ">
+              <span className="label-text text-white ">Are you a Admin?</span>
+              <input
+                type="checkbox"
+                className={isAdmin ? "toggle bg-blue-900 hover:bg-blue-950" : "toggle bg-blue-400 hover:bg-blue-500"}
+                onChange={handleAdmin}
+                checked={isAdmin}
+              />
+            </label>
+          </div>
           <button
             onClick={handleSignin}
-            className="mt-7 w-full bg-white text-blue-900 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white "
+            className="mt-4 w-full bg-white text-blue-900 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white "
           >
             Signin
           </button>
