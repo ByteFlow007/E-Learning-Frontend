@@ -1,24 +1,31 @@
 
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function UserNavbar() {
   const navigate = useNavigate();
 
-  function handleSignin(e) {
+  function handleIconClick(e){
     e.preventDefault();
-    navigate("/signin");
+    navigate("/")
+  }
+  function handleMyLearnings(e) {
+    e.preventDefault();
+    navigate("/user/myLearnings");
   }
 
-  function handleSignup(e) {
+  function handleMyCourses(e) {
     e.preventDefault();
-    navigate("/signup");
+    navigate("/user/Courses");
+  }
+  
+  function handleProfile(e){
+    e.preventDefault();
+    navigate("/user/myProfile")
   }
 
-  function handleIconClick(e) {
-    e.preventDefault();
-    navigate("/");
+  function handleLogout() {
+    
   }
-
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
@@ -71,22 +78,41 @@ function Navbar() {
         </div>
         <div className="">
           <button
-            onClick={handleSignin}
-            className="bg-white text-blue-900 mx-3 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
-          >
-            Signin
-          </button>
-          <button
-            onClick={handleSignup}
+            onClick={handleMyLearnings}
             className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
           >
-            Signup
+            My Learnings
           </button>
+          <button
+            onClick={handleMyCourses}
+            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
+          >
+            Courses
+          </button>
+         
+        
         </div>
+        <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between" onClick={handleProfile}>
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        
+        <li><a onClick={handleLogout}>Logout</a></li>
+      </ul>
+    </div>
       </div>
     </div>
   );
 
 }
 
-export default Navbar;
+export default UserNavbar;

@@ -1,24 +1,35 @@
 
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function AdminNavbar() {
   const navigate = useNavigate();
 
-  function handleSignin(e) {
+  function handleIconClick(e){
     e.preventDefault();
-    navigate("/signin");
+    navigate("/")
+  }
+  function handleCreateCourse(e) {
+    e.preventDefault();
+    navigate("/admin/createCourses");
   }
 
-  function handleSignup(e) {
+  function handleMyCourses(e) {
     e.preventDefault();
-    navigate("/signup");
+    navigate("/admin/myCourses");
   }
 
-  function handleIconClick(e) {
+  function handleStudents(e) {
     e.preventDefault();
-    navigate("/");
+    navigate("/admin/handleStudents");
   }
 
+  function handleProfile(e){
+    e.preventDefault();
+    navigate("/admin/myProfile");
+  }
+  function handleLogout() {
+    
+  }
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
@@ -71,22 +82,46 @@ function Navbar() {
         </div>
         <div className="">
           <button
-            onClick={handleSignin}
-            className="bg-white text-blue-900 mx-3 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
-          >
-            Signin
-          </button>
-          <button
-            onClick={handleSignup}
+            onClick={handleCreateCourse}
             className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
           >
-            Signup
+            CreateCourses
           </button>
+          <button
+            onClick={handleMyCourses}
+            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
+          >
+            My Courses
+          </button>
+          <button
+            onClick={handleStudents}
+            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
+          >
+            Students
+          </button>
+         
+          
         </div>
+        <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between" onClick={handleProfile}>
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a onClick={handleLogout}>Logout</a></li>
+      </ul>
+    </div>
       </div>
     </div>
   );
 
 }
 
-export default Navbar;
+export default AdminNavbar;
