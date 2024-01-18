@@ -2,7 +2,7 @@ import React from 'react'
 
 function PurchasedCourses() {
   return (
-    <div>PurchasedCourses</div>
+    <div className='h-screen bg-blue-100'>PurchasedCourses</div>
   )
 }
 

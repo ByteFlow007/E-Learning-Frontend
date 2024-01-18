@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -90,6 +90,7 @@ function Navbar() {
       </div>
     </div>
   );
+
 }
 
 export default Navbar;
