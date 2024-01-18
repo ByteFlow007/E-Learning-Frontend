@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const navigate = useNavigate();
 
   function handleSignin(e) {
     e.preventDefault();
-    navigate(`/`);
+    navigate(`/signin`);
+  }
+
+  function handleAdmin() {
+    setIsAdmin(!isAdmin);
   }
 
   return (
@@ -19,10 +25,9 @@ function Signup() {
           </div>
           <input
             type="text"
-            placeholder="eg. Abc@2023"
+            placeholder="eg. abc123"
             className="input input-bordered w-full max-w-xs text-green-800"
           />
-
           <div className="label">
             <span className="label-text text-white">Email</span>
           </div>
@@ -31,18 +36,30 @@ function Signup() {
             placeholder="eg. xyz@gmail.com"
             className="input input-bordered w-full max-w-xs text-green-800"
           />
-
           <div className="label">
             <span className="label-text text-white">Password</span>
           </div>
           <input
             type="text"
-            placeholder="Password"
+            placeholder="eg. Abc@2023"
             className="input input-bordered w-full max-w-xs text-green-800"
           />
+          <div className="form-control">
+            <label className="label cursor-pointer mt-3">
+              <span className="label-text text-white ">
+                Want to signup as Admin?
+              </span>
+              <input
+                type="checkbox"
+                className="toggle"
+                onChange={handleAdmin}
+                checked={isAdmin}
+              />
+            </label>
+          </div>
           <button
             onClick={handleSignin}
-            className="mt-7 w-full bg-white text-blue-900 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white "
+            className="mt-4 w-full bg-white text-blue-900 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white "
           >
             Signup
           </button>
