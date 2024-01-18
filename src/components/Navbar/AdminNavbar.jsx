@@ -1,35 +1,19 @@
-
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AdminNavbar() {
   const navigate = useNavigate();
 
-  function handleIconClick(e){
+  function handleIconClick(e) {
     e.preventDefault();
-    navigate("/")
-  }
-  function handleCreateCourse(e) {
-    e.preventDefault();
-    navigate("/admin/createCourses");
+    navigate("/");
   }
 
-  function handleMyCourses(e) {
-    e.preventDefault();
-    navigate("/admin/myCourses");
-  }
-
-  function handleStudents(e) {
-    e.preventDefault();
-    navigate("/admin/handleStudents");
-  }
-
-  function handleProfile(e){
+  function handleProfile(e) {
     e.preventDefault();
     navigate("/admin/myProfile");
   }
-  function handleLogout() {
-    
-  }
+
+  function handleLogout() {}
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
@@ -67,61 +51,64 @@ function AdminNavbar() {
               </span>
             </div>
           </div>
-          <div
-            tabIndex={0}
-            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
-          >
-            <div className="card-body">
-              <span className="font-bold text-lg">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+          <div className=" dropdown-bottom absolute left-32">
+            <div
+              tabIndex={0}
+              className="mt-3 z-[1] card card-compact dropdown-content w-52 shadow "
+            >
+              <div className="card-body rounded-xl border-2 border-white bg-blue-900 text-white ">
+                <span className="font-bold text-lg">8 Items</span>
+                <span className="font-thin">Subtotal: $999</span>
+                <div className="card-actions">
+                  <button className="bg-white text-blue-900 h-fit w-full py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white">
+                    View cart
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="">
-          <button
-            onClick={handleCreateCourse}
-            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
-          >
-            CreateCourses
-          </button>
-          <button
-            onClick={handleMyCourses}
-            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
-          >
-            My Courses
-          </button>
-          <button
-            onClick={handleStudents}
-            className="bg-white text-blue-900 mx-1 h-fit px-4 py-2 rounded-lg border-2 border-white hover:bg-blue-900 hover:text-white"
-          >
+        <div className="mx-3 text-white">
+          <Link to="/admin/createCourses" className="mr-3">
+            CreateCourse
+          </Link>
+          <Link to="/admin/myCourses" className="mr-3">
+            MyCourse
+          </Link>
+          <Link to="/admin/handleStudents">
             Students
-          </button>
-         
-          
+          </Link>
         </div>
         <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div className="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <Link className="justify-between" to="/admin/myProfile">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleLogout}>Logout</Link>
+            </li>
+          </ul>
         </div>
-      </div>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between" onClick={handleProfile}>
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a onClick={handleLogout}>Logout</a></li>
-      </ul>
-    </div>
       </div>
     </div>
   );
-
 }
 
 export default AdminNavbar;
