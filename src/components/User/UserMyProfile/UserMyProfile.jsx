@@ -1,11 +1,11 @@
 import React from 'react'
 
-function PurchaseCourse() {
+function UserMyProfile() {
   return (
     <div className='h-screen bg-blue-100'>
-      fuck u
+      
     </div>
   )
 }
 
-export default PurchaseCourse
+export default UserMyProfile
