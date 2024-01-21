@@ -4,13 +4,12 @@ import axios from "axios";
 
 //https://elearningbackend-ztzn.onrender.com/
 
-function Signup() {
+function Signup(props) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
@@ -38,11 +37,8 @@ function Signup() {
     }
 
     if (response.data.success) {
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        navigate("/signin");
-      }, 2000);
+      navigate("/signin");
+      props.success();
     } else {
       setMessage(response.data.errMessage);
       setError(true);
@@ -73,27 +69,6 @@ function Signup() {
 
   return (
     <div className="bg-blue-100 h-screen flex flex-col items-center justify-center">
-      {success && (
-        <div
-          role="alert"
-          className="alert alert-success z-10 w-fit fixed right-0 bottom-0"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>Signed Up Successfully.</span>
-        </div>
-      )}
       {error && (
         <div
           role="alert"
