@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Signin from "./components/Signin/Signin.jsx";
+import SignInSuccessMessage from "./components/Signin/SignInSuccessMessage.jsx";
 import Signup from "./components/Signup/Signup.jsx";
 import SignUpSuccessMessage from "./components/Signup/SignUpSuccessMessage.jsx";
 import Courses from "./components/Courses/Courses.jsx";
@@ -45,7 +46,6 @@ function App() {
     }, 2000);
   };
 
-
   const [isSignupSuccess, setIsSignupSuccess] = useState(false);
 
   function signupSuccess() {
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-    {isLoggedIn ? (
+      {isLoggedIn ? (
         isAdmin ? (
           <AdminNavbar />
         ) : (
@@ -81,30 +81,9 @@ function App() {
       </Routes>
       <Footer />
 
-      {success && (
-        <div
-          role="alert"
-          className="alert alert-success z-10 w-fit fixed right-0 bottom-0"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>Signin Successful</span>
-        </div>
-      )}
+      {success && <SignInSuccessMessage />}
 
       {isSignupSuccess && <SignUpSuccessMessage />}
-
     </>
   );
 }
