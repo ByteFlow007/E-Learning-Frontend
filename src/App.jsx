@@ -18,6 +18,7 @@ import AdminMyProfile from "./components/Admin/AdminMyProfile/AdminMyProfile.jsx
 import { jwtDecode } from "jwt-decode";
 
 function App() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -43,6 +44,7 @@ function App() {
       setSuccess(false);
     }, 2000);
   };
+
 
   return (
     <>
