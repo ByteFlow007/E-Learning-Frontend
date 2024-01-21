@@ -2,13 +2,14 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Signin from "./components/Signin/Signin.jsx";
 import Signup from "./components/Signup/Signup.jsx";
+import SignUpSuccessMessage from "./components/Signup/SignUpSuccessMessage.jsx";
 import Courses from "./components/Courses/Courses.jsx";
 import StudentsData from "./components/Admin/StudentsData/StudentsData.jsx";
 import CreateCourses from "./components/Admin/CreateCourses/CreateCourses.jsx";
 import MyCourses from "./components/Admin/MyCourses/MyCourses.jsx";
 import PurchasedCourses from "./components/User/PurchasedCourses/PurchasedCourses.jsx";
 import PurchaseCourse from "./components/User/PurchaseCourse/PurchaseCourse.jsx";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AdminNavbar from "./components/Navbar/AdminNavbar.jsx";
 import UserNavbar from "./components/Navbar/UserNavbar.jsx";
@@ -44,9 +45,19 @@ function App() {
     }, 2000);
   };
 
+
+  const [isSignupSuccess, setIsSignupSuccess] = useState(false);
+
+  function signupSuccess() {
+    setIsSignupSuccess(true);
+    setTimeout(() => {
+      setIsSignupSuccess(false);
+    }, 500);
+  }
+
   return (
     <>
-      {isLoggedIn ? (
+    {isLoggedIn ? (
         isAdmin ? (
           <AdminNavbar />
         ) : (
@@ -58,7 +69,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Courses />} />
         <Route path="/signin" element={<Signin handleLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup success={signupSuccess} />} />
+
         <Route path="/admin/createCourses" element={<CreateCourses />} />
         <Route path="admin/myCourses" element={<MyCourses />} />
         <Route path="admin/handleStudents" element={<StudentsData />} />
@@ -68,6 +80,7 @@ function App() {
         <Route path="admin/myProfile" element={<AdminMyProfile />} />
       </Routes>
       <Footer />
+
       {success && (
         <div
           role="alert"
@@ -89,6 +102,9 @@ function App() {
           <span>Signin Successful</span>
         </div>
       )}
+
+      {isSignupSuccess && <SignUpSuccessMessage />}
+
     </>
   );
 }
