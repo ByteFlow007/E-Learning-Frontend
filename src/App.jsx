@@ -17,8 +17,8 @@ import UserMyProfile from "./components/User/UserMyProfile/UserMyProfile.jsx";
 import AdminMyProfile from "./components/Admin/AdminMyProfile/AdminMyProfile.jsx";
 
 function App() {
- const [isLoggedIn,setIsLoggedIn]=useState(true);
- const [isAdmin,setIsAdmin]=useState(true);
+ const [isLoggedIn,setIsLoggedIn]=useState(false);
+ const [isAdmin,setIsAdmin]=useState(false);
   return (
     <>
       { isLoggedIn?(isAdmin?<AdminNavbar />:<UserNavbar />):<Navbar />}

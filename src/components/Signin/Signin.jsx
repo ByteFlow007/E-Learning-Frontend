@@ -42,7 +42,11 @@ function Signin() {
               <span className="label-text text-white ">Are you a Admin?</span>
               <input
                 type="checkbox"
-                className={isAdmin ? "toggle bg-blue-900 hover:bg-blue-950" : "toggle bg-blue-400 hover:bg-blue-500"}
+                className={
+                  isAdmin
+                    ? "toggle bg-blue-900 hover:bg-blue-950"
+                    : "toggle bg-blue-400 hover:bg-blue-500"
+                }
                 onChange={handleAdmin}
                 checked={isAdmin}
               />
@@ -56,7 +60,7 @@ function Signin() {
           </button>
         </label>
         <div className="mt-2">
-          Don't have account?{" "}
+          Don't have account?
           <Link to="/signup" className="hover:text-blue-200  underline">
             Signup
           </Link>
