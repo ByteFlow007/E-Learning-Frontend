@@ -13,7 +13,9 @@ function AdminNavbar() {
     navigate("/admin/myProfile");
   }
 
-  function handleLogout() {}
+  function handleLogout() {
+    
+  }
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
