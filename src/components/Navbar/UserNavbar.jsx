@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
 
-function UserNavbar() {
+function UserNavbar({setIsAdmin,setIsLoggedIn}) {
   const navigate = useNavigate();
 
   function handleIconClick(e) {
@@ -8,7 +9,12 @@ function UserNavbar() {
     navigate("/");
   }
 
-  function handleLogout() {}
+  const handleLogout=(token)=>{
+    localStorage.removeItem('token',token);
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    navigate('/signin')
+   }
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
