@@ -13,11 +13,21 @@ function Signin({ handleLogin }) {
 const navigate=useNavigate();
 
   const handleSignin = async () => {
+  let response;
   
-      const response = await axios.post(
-        "https://elearningbackend-ztzn.onrender.com/user/signin",
-        { usernameOrEmail, password }
-      );
+  if(!isAdmin){
+    response = await axios.post(
+      "https://elearningbackend-ztzn.onrender.com/user/signin",
+      { usernameOrEmail, password }
+    );
+  }
+    
+  else{
+    response = await axios.post(
+      "https://elearningbackend-ztzn.onrender.com/admin/signin",
+      { usernameOrEmail, password }
+    );
+  }
 
       if (usernameOrEmail.trim() === "" || password.trim() === "") {
         setError("Please enter both username and password.");
@@ -27,7 +37,10 @@ const navigate=useNavigate();
       if (response.data.success) {
         const token = response.data.data;
         handleLogin(token);
+        if(!isAdmin)
         navigate("/user/courses");
+        else
+        navigate("/admin/myCourses");
         
       } 
       else {

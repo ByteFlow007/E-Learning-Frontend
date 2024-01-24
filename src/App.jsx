@@ -30,7 +30,7 @@ function App() {
     if (token) {
       setIsLoggedIn(true);
       const decode_token = jwtDecode(token);
-      setIsAdmin(decode_token.role === "Admin");
+      setIsAdmin(decode_token.role === "admin");
     }
   }, []);
 
@@ -38,7 +38,7 @@ function App() {
     localStorage.setItem("token", token);
     setIsLoggedIn(true);
     const decoded_token = jwtDecode(token);
-    setIsAdmin(decoded_token.role === "Admin");
+    setIsAdmin(decoded_token.role === "admin");
 
     setSuccess(true);
     setTimeout(() => {

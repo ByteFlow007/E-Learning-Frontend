@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function AdminNavbar() {
+function AdminNavbar({setIsAdmin,setIsLoggedIn}) {
   const navigate = useNavigate();
 
   function handleIconClick(e) {
@@ -12,10 +12,13 @@ function AdminNavbar() {
     e.preventDefault();
     navigate("/admin/myProfile");
   }
-
-  function handleLogout() {
-    
-  }
+  const handleLogout=(token)=>{
+    localStorage.removeItem('token',token);
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    navigate('/signin')
+   }
+ 
   return (
     <div className="navbar bg-blue-900">
       <div className="flex-1">
