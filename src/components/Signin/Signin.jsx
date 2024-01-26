@@ -60,7 +60,7 @@ const navigate=useNavigate();
   }
 
   return (
-    <div className="bg-blue-100 h-screen flex items-center justify-center">
+    <div className="bg-gray-200 h-screen flex items-center justify-center">
       
       <div className="card w-96 bg-blue-900 text-white shadow-xl flex items-center py-5 ">
         <div className="text-3xl font-bold underline">SignIn</div>
