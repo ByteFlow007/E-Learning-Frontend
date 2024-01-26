@@ -13,10 +13,10 @@ function AdminNavbar({setIsAdmin,setIsLoggedIn}) {
     navigate("/admin/myProfile");
   }
   const handleLogout=(token)=>{
+    navigate('/signin');
     localStorage.removeItem('token',token);
     setIsLoggedIn(false);
     setIsAdmin(false);
-    navigate('/signin')
    }
  
   return (
