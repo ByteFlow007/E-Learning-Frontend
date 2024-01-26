@@ -75,7 +75,7 @@ function App() {
         <Route path="admin/myCourses" element={<MyCourses />} />
         <Route path="admin/handleStudents" element={<StudentsData />} />
         <Route path="user/myLearnings" element={<PurchasedCourses />} />
-        <Route path="user/courses" element={<PurchaseCourse />} />
+        {/* <Route path="user/courses" element={<PurchaseCourse />} /> */}
         <Route path="user/myProfile" element={<UserMyProfile />} />
         <Route path="admin/myProfile" element={<AdminMyProfile />} />
       </Routes>
