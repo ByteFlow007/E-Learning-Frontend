@@ -68,7 +68,7 @@ function Signup(props) {
   }
 
   return (
-    <div className="bg-blue-100 h-screen flex flex-col items-center justify-center">
+    <div className="bg-gray-200 h-screen flex flex-col items-center justify-center">
       {error && (
         <div
           role="alert"
