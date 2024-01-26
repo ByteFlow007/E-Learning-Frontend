@@ -70,7 +70,7 @@ function App() {
         <Route path="/" element={<Courses />} />
         <Route path="/signin" element={<Signin handleLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup success={signupSuccess} />} />
-
+        <Route path="/courses" element={<Courses />} />
         <Route path="/admin/createCourses" element={<CreateCourses />} />
         <Route path="admin/myCourses" element={<MyCourses />} />
         <Route path="admin/handleStudents" element={<StudentsData />} />
