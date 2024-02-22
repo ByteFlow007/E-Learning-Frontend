@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function CourseCard({ imgSrc, title, price, description, author, id }) {
   const navigate = useNavigate();
+  const editCourse=(id)=>{
+    navigate(`/admin/editCourse/${id}`);
+   }
   const handleBuy = async (courseid) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -52,6 +55,9 @@ function CourseCard({ imgSrc, title, price, description, author, id }) {
           >
             Buy Course
           </button>
+          <button className="btn btn-primary w-full" onClick={()=>{editCourse(id)}}>
+                Edit Course
+                </button>
           <dialog id={id} className="modal">
             <div className="modal-box">
               <h3 className="font-bold text-lg">Hello!</h3>
@@ -68,6 +74,8 @@ function CourseCard({ imgSrc, title, price, description, author, id }) {
                 >
                   Buy Now
                 </button>
+                <br></br>
+                
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <button className="btn w-24">Close</button>
