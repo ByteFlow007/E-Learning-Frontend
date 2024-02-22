@@ -17,14 +17,14 @@ const navigate=useNavigate();
   
   if(!isAdmin){
     response = await axios.post(
-      "https://elearningbackend-ztzn.onrender.com/user/signin",
+      "http://ec2-13-201-71-34.ap-south-1.compute.amazonaws.com:4000/user/signin",
       { usernameOrEmail, password }
     );
   }
     
   else{
     response = await axios.post(
-      "https://elearningbackend-ztzn.onrender.com/admin/signin",
+      "http://ec2-13-201-71-34.ap-south-1.compute.amazonaws.com:4000/admin/signin",
       { usernameOrEmail, password }
     );
   }

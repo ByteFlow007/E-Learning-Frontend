@@ -7,13 +7,14 @@ function PurchasedCourses() {
       const token=localStorage.getItem('token');
    const showCourses=async()=>{
     try{
-      const response=await axios.get(`https://elearningbackend-ztzn.onrender.com/user/mycourses`,{
+      const response=await axios.get(`http://ec2-13-201-71-34.ap-south-1.compute.amazonaws.com:4000/user/mycourses`,{
         headers:{
           Authorization:`${token}`
         }
       });
       const courseData=response.data.data|| [];
       setCourses(courseData)
+      console.log(courseData)
      
     }
     catch(e){

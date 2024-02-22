@@ -14,17 +14,18 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AdminNavbar from "./components/Navbar/AdminNavbar.jsx";
 import UserNavbar from "./components/Navbar/UserNavbar.jsx";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import UserMyProfile from "./components/User/UserMyProfile/UserMyProfile.jsx";
 import AdminMyProfile from "./components/Admin/AdminMyProfile/AdminMyProfile.jsx";
 import { jwtDecode } from "jwt-decode";
+import EditCourse from "./components/Admin/EditCourse/EditCourse.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const [success, setSuccess] = useState(false);
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -55,17 +56,20 @@ function App() {
     }, 500);
   }
 
-  return (
-    <>
-      {isLoggedIn ? (
-        isAdmin ? (
-          <AdminNavbar />
-        ) : (
-          <UserNavbar setIsAdmin={setIsAdmin} setIsLoggedIn={setIsLoggedIn} />
-        )
+  const navbar=useMemo(()=>{
+    return isLoggedIn ? (
+      isAdmin ? (
+        <AdminNavbar />
       ) : (
-        <Navbar />
-      )}
+        <UserNavbar setIsAdmin={setIsAdmin} setIsLoggedIn={setIsLoggedIn} />
+      )
+    ) : (
+      <Navbar />
+    )
+  },[isLoggedIn,isAdmin])
+  return (
+    <div>
+      {navbar}
       <Routes>
         <Route path="/" element={<Courses />} />
         <Route path="/signin" element={<Signin handleLogin={handleLogin} />} />
@@ -78,13 +82,15 @@ function App() {
         {/* <Route path="user/courses" element={<PurchaseCourse />} /> */}
         <Route path="user/myProfile" element={<UserMyProfile />} />
         <Route path="admin/myProfile" element={<AdminMyProfile />} />
+        <Route path="admin/editCourse/:courseId" element={<EditCourse />}
+        />
       </Routes>
       <Footer />
 
       {success && <SignInSuccessMessage />}
 
       {isSignupSuccess && <SignUpSuccessMessage />}
-    </>
+    </div>
   );
 }
 
